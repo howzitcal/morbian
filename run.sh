@@ -9,6 +9,7 @@ gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "caffeine@patapon.info"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "dash-to-panel@jderose9.github.com"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "mediacontrols@cliffniff.github.com"
+gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "tiling-assistant@leleat-on-github"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "mute-unmute@mcast.gnomext.com"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "tilingshell@ferrarodomenico.com"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "Vitals@CoreCoding.com"
@@ -53,11 +54,11 @@ gsettings set org.gnome.shell favorite-apps '[]'
 
 # tiling customizations
 dconf write /org/gnome/shell/extensions/tilingshell/show-indicator false
-dconf write /org/gnome/shell/extensions/tilingshell/active-screen-edges true
-dconf write /org/gnome/shell/extensions/tilingshell/enable-screen-edges-windows-suggestions true
+dconf write /org/gnome/shell/extensions/tilingshell/active-screen-edges false
+dconf write /org/gnome/shell/extensions/tilingshell/enable-screen-edges-windows-suggestions false
 dconf write /org/gnome/shell/extensions/tilingshell/enable-snap-assist true
-dconf write /org/gnome/shell/extensions/tilingshell/enable-snap-assistant-windows-suggestions true
-dconf write /org/gnome/shell/extensions/tilingshell/enable-tiling-system-windows-suggestions true
+dconf write /org/gnome/shell/extensions/tilingshell/enable-snap-assistant-windows-suggestions false
+dconf write /org/gnome/shell/extensions/tilingshell/enable-tiling-system-windows-suggestions false
 dconf write /org/gnome/shell/extensions/tilingshell/layouts-json "'[{\"id\":\"Layout 4\",\"tiles\":[{\"x\":0,\"y\":0,\"width\":0.67,\"height\":1,\"groups\":[1]},{\"x\":0.67,\"y\":0,\"width\":0.33,\"height\":1,\"groups\":[1]}]},{\"id\":\"30233458\",\"tiles\":[{\"x\":0,\"y\":0,\"width\":0.5,\"height\":1,\"groups\":[1]},{\"x\":0.5,\"y\":0,\"width\":0.49999999999999944,\"height\":1,\"groups\":[1]}]},{\"id\":\"30256698\",\"tiles\":[{\"x\":0.5,\"y\":0,\"width\":0.49999999999999967,\"height\":0.5,\"groups\":[4,1]},{\"x\":0,\"y\":0,\"width\":0.5,\"height\":0.5,\"groups\":[1,3]},{\"x\":0,\"y\":0.5,\"width\":0.5,\"height\":0.4999999999999999,\"groups\":[3,1]},{\"x\":0.5,\"y\":0.5,\"width\":0.49999999999999967,\"height\":0.4999999999999999,\"groups\":[4,1]}]},{\"id\":\"30463913\",\"tiles\":[{\"x\":0,\"y\":0,\"width\":0.5,\"height\":1,\"groups\":[1]},{\"x\":0.5,\"y\":0,\"width\":0.5000000000000006,\"height\":0.5,\"groups\":[2,1]},{\"x\":0.5,\"y\":0.5,\"width\":0.5000000000000006,\"height\":0.5,\"groups\":[2,1]}]}]'"
 dconf write /org/gnome/shell/extensions/tilingshell/outer-gaps 'uint32 0'
 dconf write /org/gnome/shell/extensions/tilingshell/inner-gaps 'uint32 0'
