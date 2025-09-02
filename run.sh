@@ -87,6 +87,9 @@ dconf write /org/gnome/shell/extensions/vitals/hot-sensors "['_processor_usage_'
 dconf write /org/gnome/shell/extensions/caffeine/show-indicator "'always'"
 dconf write /org/gnome/shell/extensions/caffeine/enable-mpris true
 
+# media custo
+dconf write /org/gnome/shell/extensions/mediacontrols/label-width 'uint32 160'
+
 # jb font
 wget https://github.com/howzitcal/morbian/raw/refs/heads/main/assets/jetbrains-fonts.tar -O $DOWNLOAD_PATH/jetbrains-fonts.tar
 sudo tar -xf $DOWNLOAD_PATH/jetbrains-fonts.tar -C /usr/share/fonts/truetype/ --wildcards "*.ttf"
