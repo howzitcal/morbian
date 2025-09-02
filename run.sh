@@ -178,8 +178,5 @@ rm -rf $DOWNLOAD_PATH
 touch $HOME/.morbian
 echo 1 > $HOME/.morbian
 
-# reset gnome
-gnome-shell --replace 
-
 # clear
 echo "it's Morbian time!"
