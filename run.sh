@@ -80,7 +80,7 @@ dconf write /org/gnome/shell/extensions/mediacontrols/show-control-icons-seek-ba
 dconf write /org/gnome/shell/extensions/mediacontrols/show-control-icons-seek-forward false
 
 # vitals customizations
-dconf write /org/gnome/shell/extensions/vitals/use-higher-precision true
+dconf write /org/gnome/shell/extensions/vitals/use-higher-precision false
 dconf write /org/gnome/shell/extensions/vitals/hot-sensors "['_processor_usage_', '_memory_usage_', '__network-rx_max__', '__network-tx_max__']"
 
 # caffine customizations
