@@ -2,6 +2,9 @@
 
 sudo apt-get update
 
+DOWNLOAD_PATH=$HOME/Downloads/tmp
+mkdir -p $DOWNLOAD_PATH
+
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "AlphabeticalAppGrid@stuarthayhurst"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "Always-Show-Titles-In-Overview@gmail.com"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "appindicatorsupport@rgcjonas.gmail.com"
@@ -24,6 +27,8 @@ sleep 30
 
 # tray icons
 dconf write /org/gnome/shell/extensions/appindicator/tray-pos "'left'"
+
+gsettings set org.gnome.desktop.app-folders folder-children "[]"
 
 #panel customizations
 monitor=`dconf read /org/gnome/shell/extensions/dash-to-panel/primary-monitor`
@@ -99,9 +104,6 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize
 gsettings set org.gnome.desktop.interface clock-show-seconds true
 
 sudo apt-get upgrade -yq
-
-DOWNLOAD_PATH=$HOME/Downloads/tmp
-mkdir -p $DOWNLOAD_PATH
 
 sudo apt-get install -yq papirus-icon-theme printer-driver-all gir1.2-gmenu-3.0 gnome-software-plugin-flatpak gnome-shell-extension-manager tilix gnome-tweaks gnome-shell-pomodoro gnome-screenshot vlc
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
