@@ -56,6 +56,7 @@ dconf write /org/gnome/shell/extensions/dash-to-panel/dot-color-unfocused-differ
 dconf write /org/gnome/shell/extensions/dash-to-panel/dot-position "'TOP'"
 dconf write /org/gnome/shell/extensions/dash-to-panel/dot-size 3
 dconf reset -f /org/gnome/desktop/app-folders/
+dconf write /org/gnome/shell/extensions/dash-to-panel/hide-overview-on-startup false
 
 # tiling customizations
 dconf write /org/gnome/shell/extensions/tilingshell/show-indicator false
