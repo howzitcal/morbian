@@ -55,7 +55,7 @@ dconf write /org/gnome/shell/extensions/dash-to-panel/dot-color-override false
 dconf write /org/gnome/shell/extensions/dash-to-panel/dot-color-unfocused-different false
 dconf write /org/gnome/shell/extensions/dash-to-panel/dot-position "'TOP'"
 dconf write /org/gnome/shell/extensions/dash-to-panel/dot-size 3
-gsettings set org.gnome.shell favorite-apps '[]'
+dconf reset -f /org/gnome/desktop/app-folders/
 
 # tiling customizations
 dconf write /org/gnome/shell/extensions/tilingshell/show-indicator false
@@ -105,8 +105,10 @@ gsettings set org.gnome.desktop.interface clock-show-seconds true
 
 sudo apt-get upgrade -yq
 
-sudo apt-get install -yq papirus-icon-theme printer-driver-all gir1.2-gmenu-3.0 gnome-software-plugin-flatpak gnome-shell-extension-manager tilix gnome-tweaks gnome-shell-pomodoro gnome-screenshot vlc
+sudo apt-get install -yq papirus-icon-theme printer-driver-all gir1.2-gmenu-3.0 gnome-software-plugin-flatpak htop gnome-shell-extension-manager tilix gnome-tweaks gnome-shell-pomodoro kooha vlc
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+sudo apt remove -yq gnome-terminal gnome-console ptyxis totem
 
 # add dark mode support for flatpaks
 flatpak install --noninteractive -y org.gtk.Gtk3theme.Adwaita-dark
@@ -138,8 +140,32 @@ gsettings set $custom_kbd:$kbd_path name $name
 gsettings set $custom_kbd:$kbd_path binding $binding
 gsettings set $custom_kbd:$kbd_path command $action
 
-# set screenshot shortcut
-gsettings set org.gnome.shell.keybindings screenshot "['<Super><Shift>s']"
+# screen record
+name="kooha"
+binding="<Super><Shift>r"
+action="/usr/bin/kooha"
+media_keys=org.gnome.settings-daemon.plugins.media-keys
+custom_kbd=org.gnome.settings-daemon.plugins.media-keys.custom-keybinding
+kbd_path=/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/$name/
+new_bindings=`gsettings get $media_keys custom-keybindings | sed -e"s>'\]>','$kbd_path']>"| sed -e"s>@as \[\]>['$kbd_path']>"`
+gsettings set $media_keys custom-keybindings "$new_bindings"
+gsettings set $custom_kbd:$kbd_path name $name
+gsettings set $custom_kbd:$kbd_path binding $binding
+gsettings set $custom_kbd:$kbd_path command $action
+
+# screen shot
+name="screenshot"
+binding="<Super><Shift>s"
+action="/usr/bin/gnome-screenshot -a"
+media_keys="org.gnome.settings-daemon.plugins.media-keys"
+custom_kbd="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding"
+kbd_path="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/$name/"
+new_bindings=$(gsettings get $media_keys custom-keybindings | sed -e "s>'\]>','$kbd_path']>" | sed -e "s>@as \[\]>['$kbd_path']>")
+gsettings set $media_keys custom-keybindings "$new_bindings"
+gsettings set $custom_kbd:$kbd_path name "$name"
+gsettings set $custom_kbd:$kbd_path binding "$binding"
+gsettings set $custom_kbd:$kbd_path command "$action"
+
 
 # tilix fix
 dconf write /com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d/login-shell true
